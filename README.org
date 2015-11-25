@@ -22,5 +22,5 @@
 #+END_SRC
 
 #+RESULTS:
-[[file:fsm-dia-plant.png]]
+[[fsm-dia.png]]
 
