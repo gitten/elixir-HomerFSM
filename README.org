@@ -11,7 +11,7 @@
   - [[https://github.com/sasa1977/fsm][fsm]]
 ** HomerFSM State Diagram
 
-#+BEGIN_SRC plantuml :file fsm-dia-plant.png
+#+BEGIN_SRC plantuml :file fsm-dia.png
                 [*] --> awaiting_key_press
  awaiting_key_press --> awaiting_response
   awaiting_response --> warning
