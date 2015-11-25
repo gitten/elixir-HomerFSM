@@ -1,0 +1,26 @@
+#+title:The Elixirfied HomerFSM
+#+options: toc:nil
+
+
+* Elixirfied HomerFSM
+** Resources
+  - [[https://howistart.org/posts/erlang/1][The orginal erlang project]]
+  - [[https://isotope11.com/blog/a-tour-of-finite-states-in-elixir-part-1][Finite state machine in elixir with fsm : part 1]]
+  - [[https://isotope11.com/blog/a-tour-of-finite-state-machines-in-elixir-part-2][Finite state machine in elixir with fsm : part 2]]
+** Dependencies
+  - [[https://github.com/sasa1977/fsm][fsm]]
+** HomerFSM State Diagram
+
+#+BEGIN_SRC plantuml :file fsm-dia-plant.png
+                [*] --> awaiting_key_press
+ awaiting_key_press --> awaiting_response
+  awaiting_response --> warning
+            warning --> awaiting_response  
+  awaiting_response --> venting_gas
+
+
+#+END_SRC
+
+#+RESULTS:
+[[file:fsm-dia-plant.png]]
+
