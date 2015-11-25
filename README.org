@@ -12,15 +12,37 @@
 ** HomerFSM State Diagram
 
 #+BEGIN_SRC plantuml :file fsm-dia.png
-                [*] --> awaiting_key_press
- awaiting_key_press --> awaiting_response
-  awaiting_response --> warning
-            warning --> awaiting_response  
-  awaiting_response --> venting_gas
+
+
+               [*] --> awaiting_key_press : [user connected to SRRMS]
+awaiting_key_press --> monitoring_core : [any key] / core check
+
+   monitoring_core --> monitoring_core : [timeout] / core check
+   monitoring_core --> awaiting_decision : [input 'no'] / give advice
+
+ awaiting_decision --> monitoring_core : [imput 'no'] / core check
+ awaiting_decision --> venting_gas : [imput 'yes'] / vent gas
+
+   monitoring_core --> system_lock : [core temp = 'doh'] / lock system
+       system_lock --> [*]
+
+            
+   monitoring_core --> venting_gas : [input 'yes'] / vent gas
+
+       venting_gas --> monitoring_core : [core temp = normal] / core check
+
+ awaiting_decision : do/ give user advice
+ awaiting_decision : do/ prompt for input
+   monitoring_core : do/ display core temp
+   monitoring_core : do/ prompt for imput
+       system_lock : do/ notify user to execute manual shutdown
+       venting_gas : events
+
+
 
 
 #+END_SRC
 
 #+RESULTS:
-[[fsm-dia.png]]
+[[file:fsm-dia.png]]
 
