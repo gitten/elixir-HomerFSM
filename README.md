@@ -16,4 +16,4 @@ Dependencies
 HomerFSM State Diagram
 ----------------------
 
-![](file:fsm-dia.png)
+![](fsm-dia.png)
