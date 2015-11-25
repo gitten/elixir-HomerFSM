@@ -1,19 +1,17 @@
-# HomerFSM
+Resources
+=========
 
-**TODO: Add description**
+-   [The orginal erlang project](https://howistart.org/posts/erlang/1)
+-   [Finite state machine in elixir with fsm : part 1](https://isotope11.com/blog/a-tour-of-finite-states-in-elixir-part-1)
+-   [Finite state machine in elixir with fsm : part 2](https://isotope11.com/blog/a-tour-of-finite-state-machines-in-elixir-part-2)
 
-## Installation
+Dependencies
+============
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+fsm  
+elxir finite state machine package
 
-  1. Add homerfsm to your list of dependencies in `mix.exs`:
+HomerFSM State Diagram
+======================
 
-        def deps do
-          [{:homerfsm, "~> 0.0.1"}]
-        end
-
-  2. Ensure homerfsm is started before your application:
-
-        def application do
-          [applications: [:homerfsm]]
-        end
+![](file:fsm-dia-plant.png)
