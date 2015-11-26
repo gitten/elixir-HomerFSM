@@ -15,7 +15,9 @@
 
 
                [*] --> awaiting_key_press : [user connected to SRRMS]
+
 awaiting_key_press --> monitoring_core : [any key] / core check
+awaiting_key_press : do/ display welcome
 
    monitoring_core --> monitoring_core : [timeout] / core check
    monitoring_core --> awaiting_decision : [input 'no'] / give advice
@@ -37,8 +39,6 @@ awaiting_key_press --> monitoring_core : [any key] / core check
    monitoring_core : do/ prompt for imput
        system_lock : do/ notify user to execute manual shutdown
        venting_gas : events
-
-
 
 
 #+END_SRC
