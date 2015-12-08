@@ -1,6 +1,6 @@
 #+title:The Elixirfied HomerFSM
 #+options: toc:nil
-
+#+reveal_theme: night
 
 * Elixirfied HomerFSM
 ** Resources
@@ -45,4 +45,5 @@ awaiting_key_press : do/ display welcome
 
 #+RESULTS:
 [[file:fsm-dia.png]]
+
 
