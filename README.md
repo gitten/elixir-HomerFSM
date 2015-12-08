@@ -1,6 +1,16 @@
 Elixirfied HomerFSM
 ===================
 
+TODO stately states \[3/6\]
+---------------------------
+
+-   \[X\] user<sub>connecting</sub>
+-   \[X\] awaiting<sub>keypress</sub>
+-   \[X\] monitoring<sub>core</sub>
+-   \[ \] awaiting<sub>decision</sub>
+-   \[ \] venting<sub>gas</sub>
+-   \[ \] system<sub>lock</sub>
+
 Resources
 ---------
 
@@ -17,13 +27,3 @@ HomerFSM State Diagram
 ----------------------
 
 ![](fsm-dia.png)
-
-TODO stately states \[3/6\]
----------------------------
-
--   \[X\] user<sub>connecting</sub>
--   \[X\] awaiting<sub>keypress</sub>
--   \[X\] monitoring<sub>core</sub>
--   \[ \] awaiting<sub>decision</sub>
--   \[ \] venting<sub>gas</sub>
--   \[ \] system<sub>lock</sub>

@@ -1,8 +1,16 @@
 #+title:The Elixirfied HomerFSM
-#+options: toc:nil
+#+options:
 #+reveal_theme: night
 
 * Elixirfied HomerFSM
+** TODO stately states [3/6]
+   - [X] user_connecting
+   - [X] awaiting_key_press
+   - [X] monitoring_core
+   - [ ] awaiting_decision
+   - [ ] venting_gas
+   - [ ] system_lock
+
 ** Resources
   - [[https://howistart.org/posts/erlang/1][The orginal erlang project]]
   - [[https://isotope11.com/blog/a-tour-of-finite-states-in-elixir-part-1][Finite state machine in elixir with fsm : part 1]]
@@ -46,11 +54,4 @@ awaiting_key_press : do/ display welcome
 #+RESULTS:
 [[file:fsm-dia.png]]
 
-** TODO stately states [3/6]
-   - [X] user_connecting
-   - [X] awaiting_key_press
-   - [X] monitoring_core
-   - [ ] awaiting_decision
-   - [ ] venting_gas
-   - [ ] system_lock
 
