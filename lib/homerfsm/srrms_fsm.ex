@@ -8,8 +8,9 @@ defmodule HomerFSM.SrrmsFsm do
 
   defstate user_connecting do
     defevent welcome_user do
-      # some shnazzy loading/connecting anime here
+      # some shnazzy loading/connecting anime here, someday
       IO.puts("Welcome, (something not funny).")
+
       HomerFSM.Reactor.start_link(:core)
 
       next_state(:awaiting_key_press)
@@ -34,13 +35,33 @@ defmodule HomerFSM.SrrmsFsm do
 
   defstate monitoring_core do
     defevent display_core_temp do
-      # spawn some state face
+      tokens = HomerFSM.Reactor.core_check |> Enum.count
+      # `tokens` is place holder for temp for now
+      IO.puts(
+      """
+      Core has #{tokens} tokens.
+      """)
     end
+    defevent prompt_user do
+      #handling with a task for timeout
+      task = Task.async(
+        fn -> IO.gets("""
+        The answer quickly
+        """
+        end))
+# bookmark: left off here
+      defp branch response do
+        case response do
+        end
+      end
+      
+    end
+    
   end
 
 
   defstate awaiting_decision do
-    defevent prompt do
+    defevent prompt_user do
       IO.puts("touchme")
     end
   end
@@ -58,4 +79,5 @@ defmodule HomerFSM.SrrmsFsm do
       IO.puts "manual restart required!?"
     end
   end
+
 end
