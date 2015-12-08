@@ -44,19 +44,24 @@ defmodule HomerFSM.SrrmsFsm do
     end
     defevent prompt_user do
       #handling with a task for timeout
-      task = Task.async(
-        fn -> IO.gets("""
-        The answer quickly
-        """
-        end))
-# bookmark: left off here
-      defp branch response do
-        case response do
-        end
-      end
-      
+      prompt = Task.async(fn -> IO.gets("The answer quickly") end)
+
+      prompt
+      |> Task.yield
+      |> branch prompt
     end
-    
+
+    defp branch response, prompt do
+      case response do
+        {:ok, "y\n"} -> next_state(:venting_gas)
+        {:ok, "n\n"} -> next_state(:awaiting_decision)
+        nil ->
+          Task.shutdown(prompt, :brutal_kill)
+          HomerFSM.Reactor.doh :core
+          next_state(:monitoring_core)
+      end
+    end
+
   end
 
 
