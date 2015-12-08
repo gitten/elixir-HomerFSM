@@ -4,12 +4,12 @@
 
 * Elixirfied HomerFSM
 ** TODO stately states [3/6]
-   - [X] user_connecting
-   - [X] awaiting_key_press
-   - [X] monitoring_core
-   - [ ] awaiting_decision
-   - [ ] venting_gas
-   - [ ] system_lock
+   - [X] user connecting
+   - [X] awaiting key press
+   - [X] monitoring core
+   - [ ] awaiting decision
+   - [ ] venting gas
+   - [ ] system lock
 
 ** Resources
   - [[https://howistart.org/posts/erlang/1][The orginal erlang project]]

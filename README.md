@@ -4,12 +4,12 @@ Elixirfied HomerFSM
 TODO stately states \[3/6\]
 ---------------------------
 
--   \[X\] user<sub>connecting</sub>
--   \[X\] awaiting<sub>keypress</sub>
--   \[X\] monitoring<sub>core</sub>
--   \[ \] awaiting<sub>decision</sub>
--   \[ \] venting<sub>gas</sub>
--   \[ \] system<sub>lock</sub>
+-   \[X\] user connecting
+-   \[X\] awaiting key press
+-   \[X\] monitoring core
+-   \[ \] awaiting decision
+-   \[ \] venting gas
+-   \[ \] system lock
 
 Resources
 ---------
