@@ -9,8 +9,8 @@
   - [[https://isotope11.com/blog/a-tour-of-finite-state-machines-in-elixir-part-2][Finite state machine in elixir with fsm : part 2]]
 ** Dependencies
   - [[https://github.com/sasa1977/fsm][fsm]]
-** HomerFSM State Diagram
 
+** HomerFSM State Diagram
 #+BEGIN_SRC plantuml :file fsm-dia.png
 
 
@@ -46,4 +46,11 @@ awaiting_key_press : do/ display welcome
 #+RESULTS:
 [[file:fsm-dia.png]]
 
+** TODO stately states [0/6]
+   - [ ] user_connecting
+   - [ ] awaiting_key_press
+   - [ ] monitoring_core
+   - [ ] awaiting_decision
+   - [ ] venting_gas
+   - [ ] system_lock
 
