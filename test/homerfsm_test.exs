@@ -2,7 +2,18 @@ defmodule HomerFSMTest do
   use ExUnit.Case
   doctest HomerFSM
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  @tokens [:token, :token]
+
+  import HomerFSM.Reactor
+  
+  test "reactor module functionality" do
+    start_link :core, [:token]
+
+    assert {:ok, :token} == doh :core
+    assert :error == doh :core
+
+    vent_gas :core, @tokens
+    assert @tokens == core_check :core
   end
+  
 end

@@ -14,8 +14,8 @@ defmodule HomerFSM.Reactor do
   
   Call from `user_connecting` or `awaiting_key_press` state?
   """
-  def start_link(core) do
-    Agent.start_link(fn -> @aladin end, name: core )
+  def start_link(core, tokens \\ @aladin) do
+    Agent.start_link(fn -> tokens end, name: core )
   end
 
   @doc """
@@ -42,7 +42,7 @@ defmodule HomerFSM.Reactor do
 
   Also, refills the 'core` token bucket, hureiy.
   """
-  def vent_gas core do
-    Agent.update( core, fn [] -> @aladin end)
+  def vent_gas core, tokens \\ @aladin do
+    Agent.update( core, fn [] -> tokens end)
   end
 end
