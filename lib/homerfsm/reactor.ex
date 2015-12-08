@@ -27,6 +27,7 @@ defmodule HomerFSM.Reactor do
   w@doc """
   Venting gases releives pressure, cramps, and is fun to share with
   others. 
+
   Also, refills the 'core` token bucket, hureiy.
   """
   def vent_gas core do
