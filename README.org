@@ -46,10 +46,10 @@ awaiting_key_press : do/ display welcome
 #+RESULTS:
 [[file:fsm-dia.png]]
 
-** TODO stately states [0/6]
-   - [ ] user_connecting
-   - [ ] awaiting_key_press
-   - [ ] monitoring_core
+** TODO stately states [3/6]
+   - [X] user_connecting
+   - [X] awaiting_key_press
+   - [X] monitoring_core
    - [ ] awaiting_decision
    - [ ] venting_gas
    - [ ] system_lock

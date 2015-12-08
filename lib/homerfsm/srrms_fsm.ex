@@ -5,11 +5,19 @@ defmodule HomerFSM.SrrmsFsm do
   hrrrrrm
   """
 
+  def connect do
+      new
+      |> welcome_user
+      |> any_key
+      |> display_core_temp
+      |> prompt_user
+  end
+    
 
   defstate user_connecting do
     defevent welcome_user do
       # some shnazzy loading/connecting anime here, someday
-      IO.puts("Welcome, (something not funny).")
+      IO.puts("Welcome, (something not funny).\n")
 
       HomerFSM.Reactor.start_link(:core)
 
