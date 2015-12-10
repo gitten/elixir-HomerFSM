@@ -43,7 +43,7 @@ defmodule HomerFSM.SrrmsFsm do
 
   defstate monitoring_core do
     defevent display_core_temp do
-      tokens = HomerFSM.Reactor.core_check :core |> Enum.count
+      tokens = HomerFSM.Reactor.core_check(:core) |> Enum.count
       # `tokens` is place holder for temp for now
       IO.puts(
       """
