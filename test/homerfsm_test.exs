@@ -18,18 +18,4 @@ defmodule HomerFSMTest do
     assert @tokens == core_check :core
   end
 
-  test "state functionality: monitoring_core" do
-
-     branch_point =  fn -> 
-      new
-      |> welcome_user
-      |> any_key
-      |> display_core_temp
-      |> prompt_user
-    end
-     
-    branch_point.()
-    
-  end
-  
 end

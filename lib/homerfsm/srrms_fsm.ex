@@ -6,34 +6,58 @@ defmodule HomerFSM.SrrmsFsm do
   """
 
   def connect do
-      new
-      |> welcome_user
-      |> any_key
-      |> display_core_temp
-      |> prompt_user
+    new
+    |> welcome_user
+    |> any_key
+    |> tranny
   end
-    
+
+  def tranny next_state do
+    case next_state do
+      %{state: :monitoring_core} ->
+        next_state
+        |> display_core_temp
+        |> prompt_user
+        |> tranny
+      %{state: :venting_gas} ->
+        next_state
+        |> vented
+        |> woosh
+        |> tranny
+      %{state: :awaiting_decision} ->
+        next_state
+        |> prompt_user
+        |> tranny
+      %{state: :system_lock} ->
+        next_state
+        |> lock
+    end
+  end
+  
+  
 
   defstate user_connecting do
     defevent welcome_user do
       # some shnazzy loading/connecting anime here, someday
-      IO.puts("Welcome, (something not funny).\n")
+      IO.puts("/n/n/n/n/n/n/n")
+      IO.puts("Welcome, (put something not funny).\n\n\n")
 
-      HomerFSM.Reactor.start_link(:core)
-
+      HomerFSM.Reactor.start_link
       next_state(:awaiting_key_press)
     end
   end
 
 
+
   defstate awaiting_key_press do
     defevent any_key do
+
       IO.gets(
       """
       Press any key, then `Return`.
-
-     ...or just press `Return`.
-     """)
+      
+      ...or just press `Return`.\n\n
+      """)
       # needs return after any key, so not really any key =(
 
       next_state(:monitoring_core)
@@ -43,54 +67,85 @@ defmodule HomerFSM.SrrmsFsm do
 
   defstate monitoring_core do
     defevent display_core_temp do
-      tokens = HomerFSM.Reactor.core_check(:core) |> Enum.count
+      tokens = HomerFSM.Reactor.core_check
+      |> Enum.count
       # `tokens` is place holder for temp for now
       IO.puts(
       """
-      Core has #{tokens} tokens.
+      \n\nCore has #{tokens} tokens.
+      
       """)
     end
+    
     defevent prompt_user do
-      #handling with a task for timeout
-      prompt = Task.async(fn -> IO.gets("The answer quickly") end)
-
-      prompt
-      |> Task.yield
-      |> branch prompt
+      tokens = HomerFSM.Reactor.core_check
+      
+      prompter(tokens) |> branch(:awaiting_decision, tokens)
+      
     end
-
-    defp branch response, prompt do
-      case response do
-        {:ok, "y\n"} -> next_state(:venting_gas)
-        {:ok, "n\n"} -> next_state(:awaiting_decision)
-        nil ->
-          Task.shutdown(prompt, :brutal_kill)
-          HomerFSM.Reactor.doh :core
-          next_state(:monitoring_core)
-      end
-    end
-
   end
 
 
   defstate awaiting_decision do
     defevent prompt_user do
-      IO.puts("touchme")
+
+      IO.puts "ADVISE: You want to vent.\n\n"
+      
+      prompter |> branch(:monitoring_core)
+
     end
   end
 
 
   defstate venting_gas do
-    defevent some_events_here do
-      IO.puts
+    defevent vented do
+      HomerFSM.Reactor.vent_gas
+      IO.puts "\n\n\nplop, plop, fizz, fizz...\n"
+    end
+
+    defevent woosh do
+      IO.puts "whats that smell...?\n"
+      next_state(:monitoring_core)
     end
   end
-
+  
 
   defstate system_lock do
     defevent lock do
-      IO.puts "manual restart required!?"
+      IO.puts "DOH! a manual restart required!\n"
+      HomerFSM.Reactor.lock
     end
   end
 
+  #######################################
+  ## my privates
+
+  defp branch response, state, tokens \\ nil do
+    case {response, tokens} do
+
+           {{_, _}, []} -> next_state(:system_lock)
+      {{:ok, "y\n"}, _} -> next_state(:venting_gas)
+
+      {{:ok, "n\n"}, _} ->
+        if state == :awaiting_decision do
+        HomerFSM.Reactor.doh
+        end
+        next_state(state)
+
+      {nil, _} ->
+        HomerFSM.Reactor.doh
+        next_state(:monitoring_core)
+    end
+  end
+
+
+  defp prompter tokens \\ nil do
+    case tokens do
+      [] -> nil
+      _ ->
+        Task.async(IO, :gets, ["Would you like to vent gas? (`y` or `n`)_ "])
+        |> Task.yield
+
+    end
+  end
 end

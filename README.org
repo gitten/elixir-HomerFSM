@@ -3,12 +3,12 @@
 #+reveal_theme: night
 
 * Elixirfied HomerFSM
-** TODO stately states [3/6]
+** TODO stately states [5/6]
    - [X] user connecting
    - [X] awaiting key press
    - [X] monitoring core
-   - [ ] awaiting decision
-   - [ ] venting gas
+   - [X] awaiting decision
+   - [X] venting gas
    - [ ] system lock
 
 ** Resources

@@ -1,14 +1,14 @@
 Elixirfied HomerFSM
 ===================
 
-TODO stately states \[3/6\]
+TODO stately states \[5/6\]
 ---------------------------
 
 -   \[X\] user connecting
 -   \[X\] awaiting key press
 -   \[X\] monitoring core
--   \[ \] awaiting decision
--   \[ \] venting gas
+-   \[X\] awaiting decision
+-   \[X\] venting gas
 -   \[ \] system lock
 
 Resources
@@ -26,4 +26,4 @@ Dependencies
 HomerFSM State Diagram
 ----------------------
 
-![](fsm-dia.png)
+![]fsm-dia.png)

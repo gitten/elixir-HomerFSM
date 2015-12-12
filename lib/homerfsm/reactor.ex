@@ -14,14 +14,14 @@ defmodule HomerFSM.Reactor do
   
   Call from `user_connecting` or `awaiting_key_press` state?
   """
-  def start_link(core, tokens \\ @aladin) do
+  def start_link(core \\ :core, tokens \\ @aladin) do
     Agent.start_link(fn -> tokens end, name: core )
   end
 
   @doc """
   Checks current `core` temperature tokens
   """
-  def core_check core do
+  def core_check core \\ :core do
     Agent.get(core, &(&1))
   end
   
@@ -29,7 +29,7 @@ defmodule HomerFSM.Reactor do
   @doc """
   Removes a token from the `core`.
   """
-  def doh core do
+  def doh core \\ :core do
     Agent.get_and_update(core, fn
       [] -> {:error, []}
       [head|tail] -> {{:ok, head}, tail} end)
@@ -42,7 +42,12 @@ defmodule HomerFSM.Reactor do
 
   Also, refills the 'core` token bucket, hureiy.
   """
-  def vent_gas core, tokens \\ @aladin do
-    Agent.update( core, fn [] -> tokens end)
+  def vent_gas core \\ :core, tokens \\ @aladin do
+    Agent.update( core, fn list -> tokens end)
   end
+
+  def lock core \\ :core do
+    Agent.stop(core)
+  end
+
 end
