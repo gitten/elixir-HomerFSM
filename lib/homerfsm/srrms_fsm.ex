@@ -39,7 +39,7 @@ defmodule HomerFSM.SrrmsFsm do
   defstate user_connecting do
     defevent welcome_user do
       # some shnazzy loading/connecting anime here, someday
-      IO.puts("/n/n/n/n/n/n/n")
+      IO.puts("\n\n\n\n\n\n")
       IO.puts("Welcome, (put something not funny).\n\n\n")
 
       HomerFSM.Reactor.start_link
@@ -108,7 +108,7 @@ defmodule HomerFSM.SrrmsFsm do
       next_state(:monitoring_core)
     end
   end
-  
+    
 
   defstate system_lock do
     defevent lock do
@@ -123,7 +123,7 @@ defmodule HomerFSM.SrrmsFsm do
   defp branch response, state, tokens \\ nil do
     case {response, tokens} do
 
-           {{_, _}, []} -> next_state(:system_lock)
+           {nil, []} -> next_state(:system_lock)
       {{:ok, "y\n"}, _} -> next_state(:venting_gas)
 
       {{:ok, "n\n"}, _} ->
