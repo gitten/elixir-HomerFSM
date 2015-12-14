@@ -3,14 +3,19 @@
 #+reveal_theme: night
 
 * Elixirfied HomerFSM
-** TODO stately states [5/6]
+** TODO stately states [6/6]
    - [X] user connecting
    - [X] awaiting key press
    - [X] monitoring core
    - [X] awaiting decision
    - [X] venting gas
-   - [ ] system lock
+   - [X] system lock
+** Try me!
+#+BEGIN_SRC elixir
+  $ iex -S mix
 
+  iex> HomerFSM.SrrmsFSM.connect
+#+END_SRC
 ** Resources
   - [[https://howistart.org/posts/erlang/1][The orginal erlang project]]
   - [[https://isotope11.com/blog/a-tour-of-finite-states-in-elixir-part-1][Finite state machine in elixir with fsm : part 1]]

@@ -1,7 +1,7 @@
 Elixirfied HomerFSM
 ===================
 
-TODO stately states \[5/6\]
+TODO stately states \[6/6\]
 ---------------------------
 
 -   \[X\] user connecting
@@ -9,7 +9,16 @@ TODO stately states \[5/6\]
 -   \[X\] monitoring core
 -   \[X\] awaiting decision
 -   \[X\] venting gas
--   \[ \] system lock
+-   \[X\] system lock
+
+Try me!
+-------
+
+``` elixir
+  $ iex -S mix
+
+  iex> HomerFSM.SrrmsFSM.connect
+```
 
 Resources
 ---------
@@ -26,4 +35,4 @@ Dependencies
 HomerFSM State Diagram
 ----------------------
 
-![]fsm-dia.png)
+![](fsm-dia.png)
